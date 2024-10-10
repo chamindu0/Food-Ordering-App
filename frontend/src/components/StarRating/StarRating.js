@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './starRating.module.css';
-export default function StarRating({ stars, size }) {
+
+export default function StarRating({ stars, size, onChange }) {
   const styles = {
     width: size + 'px',
     height: size + 'px',
@@ -11,11 +12,35 @@ export default function StarRating({ stars, size }) {
     const halfNumber = number - 0.5;
 
     return stars >= number ? (
-      <img src="/star-full.svg" style={styles} alt={number} />
+      <img
+        src="/star-full.svg"
+        style={styles}
+        alt={number}
+        onClick={() => onChange(number)} // Set rating on click
+        role="button"
+        tabIndex={0} // Make it focusable
+        onKeyPress={(e) => e.key === 'Enter' && onChange(number)} // Handle keyboard accessibility
+      />
     ) : stars >= halfNumber ? (
-      <img src="/star-half.svg" style={styles} alt={number} />
+      <img
+        src="/star-half.svg"
+        style={styles}
+        alt={number}
+        onClick={() => onChange(number)} // Set rating on click
+        role="button"
+        tabIndex={0} // Make it focusable
+        onKeyPress={(e) => e.key === 'Enter' && onChange(number)} // Handle keyboard accessibility
+      />
     ) : (
-      <img src="/star-empty.svg" style={styles} alt={number} />
+      <img
+        src="/star-empty.svg"
+        style={styles}
+        alt={number}
+        onClick={() => onChange(number)} // Set rating on click
+        role="button"
+        tabIndex={0} // Make it focusable
+        onKeyPress={(e) => e.key === 'Enter' && onChange(number)} // Handle keyboard accessibility
+      />
     );
   }
 

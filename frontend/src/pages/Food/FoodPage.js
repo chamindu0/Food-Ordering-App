@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom'; // Import Link from react-router-dom
 import Price from '../../components/Price/Price';
 import StarRating from '../../components/StarRating/StarRating';
 import Tags from '../../components/Tags/Tags';
 import { useCart } from '../../hooks/useCart';
-import { getById } from '../../services/foodService';
+import { getById, getRecommendations } from '../../services/foodService';
 import classes from './foodPage.module.css';
 import NotFound from '../../components/NotFound/NotFound';
+import ShowReview from '../../components/ShowReview/ShowReview';
+
 export default function FoodPage() {
   const [food, setFood] = useState({});
+  const [recommendedFoods, setRecommendedFoods] = useState([]); // State for recommendations
   const { id } = useParams();
   const { addToCart } = useCart();
   const navigate = useNavigate();
@@ -20,7 +23,11 @@ export default function FoodPage() {
 
   useEffect(() => {
     getById(id).then(setFood);
+
+    // Fetch recommendations based on the current food item
+    getRecommendations(id).then(setRecommendedFoods);
   }, [id]);
+
   return (
     <>
       {!food ? (
@@ -75,8 +82,31 @@ export default function FoodPage() {
 
             <button onClick={handleAddToCart}>Add To Cart</button>
           </div>
+
+          {/* Recommendations Section */}
+          <div className={classes.recommendations}>
+            <h3>Recommended for You</h3>
+            <div className={classes.recommendationList}>
+              {recommendedFoods.map(recommendation => (
+                <Link
+                  to={`/food/${recommendation._id}`} // Navigate to food detail page when clicked
+                  key={recommendation._id}
+                  className={classes.recommendationItem}
+                >
+                  <img src={recommendation.imageUrl} alt={recommendation.name} />
+                  <div className={classes.recommendationDetails}>
+                    <span>{recommendation.name}</span>
+                    <Price price={recommendation.price} />
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <ShowReview foodId={id} />
+          </div>
         </div>
       )}
+
+    
     </>
   );
 }

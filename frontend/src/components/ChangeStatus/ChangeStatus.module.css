@@ -1,0 +1,103 @@
+/* ChangeStatus.module.css */
+
+.container {
+  max-width: 500px; /* Limit the width for better readability */
+  margin: 40px auto; /* Center the container */
+  padding: 40px; /* Add padding */
+  border-radius: 25px; /* Round the corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  background-color: #ffffff; /* White background */
+  font-family: 'Arial', sans-serif; /* Use a modern font */
+  max-height:1000px;
+}
+
+h2 {
+  font-size: 24px; /* Increase font size for the heading */
+  margin-bottom: 20px; /* Space below the heading */
+  color: #333; /* Darker color for contrast */
+  text-align: center;
+}
+
+label {
+  display: block; /* Make the label block to occupy the full width */
+  font-size: 16px; /* Slightly larger font size */
+  margin-bottom: 8px; /* Space below the label */
+  color: #555; /* Medium gray color */
+}
+
+select {
+  width: 100%; /* Full width for the select box */
+  padding: 10px; /* Padding for better touch targets */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  margin-bottom: 40px; /* Space below the select box */
+  transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+select:focus {
+  border-color: #007bff; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+}
+
+button {
+  background-color: #ff0037; /* Bootstrap primary color */
+  color: white; /* White text */
+  padding: 15px 15px; /* Add padding */
+  border: none; /* Remove border */
+  border-radius: 30px; /* Rounded corners */
+  font-size: 18px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition */
+  width: 100%; /* Full width */
+}
+
+button:hover {
+  background-color: #d42323; /* Darker blue on hover */
+}
+
+p {
+  color: red; /* Red color for error messages */
+  font-weight: bold; /* Bold text */
+  margin-top: 10px; /* Space above the error message */
+}
+
+ /* Custom dropDown*/
+
+
+.dropdown {
+  position: relative;
+  width: 100%; /* Full width for the dropdown */
+  margin-bottom: 20px;
+}
+
+.selected {
+  padding: 10px; /* Padding */
+  border: 1px solid #ccc; /* Border */
+  border-radius: 25px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+  text-align: center; /* Left align text */
+  background-color: #90f6ea; /* Background color */
+}
+
+.options {
+  position: absolute; /* Position absolute for the options */
+  top: 100%; /* Position below the selected item */
+  text-align:center;
+  width: 100%;
+  border: 1px solid #ccc; /* Border */
+  border-radius: 25px; /* Rounded corners */
+  background-color: #fff; /* Background color */
+  z-index: 1; /* Ensure it's on top */
+  max-height: 200px; /* Limit height */
+  overflow-y: auto; /* Scroll if too many options */
+}
+
+.option {
+  padding: 10px; /* Padding */
+  cursor: pointer; /* Pointer cursor */
+}
+
+.option:hover {
+  opacity: 0.8; /* Change opacity on hover */
+}

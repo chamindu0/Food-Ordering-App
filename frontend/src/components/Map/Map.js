@@ -11,13 +11,13 @@ import {
 import { toast } from 'react-toastify';
 import * as L from 'leaflet';
 
-export default function Map({ readonly, location, onChange }) {
+export default function Map({ readonly, location, onChange = () => {} }) { // Default onChange to an empty function
   return (
     <div className={classes.container}>
       <MapContainer
         className={classes.map}
-        center={[0, 0]}
-        zoom={1}
+        center={location || [0, 0]} // Default center or initial location
+        zoom={1} // Change zoom level to fit better
         dragging={!readonly}
         touchZoom={!readonly}
         doubleClickZoom={!readonly}
@@ -30,7 +30,7 @@ export default function Map({ readonly, location, onChange }) {
         <FindButtonAndMarker
           readonly={readonly}
           location={location}
-          onChange={onChange}
+          onChange={onChange} // Ensure onChange is passed down
         />
       </MapContainer>
     </div>
@@ -41,20 +41,20 @@ function FindButtonAndMarker({ readonly, location, onChange }) {
   const [position, setPosition] = useState(location);
 
   useEffect(() => {
-    if (readonly) {
-      map.setView(position, 13);
-      return;
+    if (position && onChange) {
+      onChange(position); // Call onChange only if it's defined
     }
-    if (position) onChange(position);
-  }, [position]);
+  }, [position, onChange]);
 
   const map = useMapEvents({
     click(e) {
-      !readonly && setPosition(e.latlng);
+      if (!readonly) {
+        setPosition(e.latlng);
+      }
     },
     locationfound(e) {
       setPosition(e.latlng);
-      map.flyTo(e.latlng, 13);
+      map.flyTo(e.latlng, 13); // Smoothly move to location
     },
     locationerror(e) {
       toast.error(e.message);
@@ -74,7 +74,12 @@ function FindButtonAndMarker({ readonly, location, onChange }) {
         <button
           type="button"
           className={classes.find_location}
-          onClick={() => map.locate()}
+          onClick={() => {
+            map.locate({
+              setView: true, // Automatically set view to the location
+              maxZoom: 13, // Set zoom level after finding location
+            });
+          }}
         >
           Find My Location
         </button>
@@ -83,7 +88,7 @@ function FindButtonAndMarker({ readonly, location, onChange }) {
       {position && (
         <Marker
           eventHandlers={{
-            dragend: e => {
+            dragend: (e) => {
               setPosition(e.target.getLatLng());
             },
           }}

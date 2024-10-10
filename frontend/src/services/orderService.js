@@ -33,3 +33,9 @@ export const getAllStatus = async () => {
   const { data } = await axios.get(`/api/orders/allstatus`);
   return data;
 };
+
+
+export const updateOrderStatus = async (orderId, status) => {
+  const { data } = await axios.put(`/api/orders/status/${orderId}`, { status });
+  return data;
+};

@@ -1,0 +1,227 @@
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #3498db; /* Header background color */
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.headerBotImg {
+  width: 30px; /* Adjust size as needed */
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.headerTitle {
+  font-size: 18px;
+  color: white; /* Text color for the header */
+  font-weight: bold;
+}
+
+
+
+
+/* Optional: Additional colors for different user responses */
+.userMessage.special {
+    background-color: #2ecc71; /* Different color for special user responses */
+}
+
+.botMessage.special {
+    background-color: #e74c3c; /* Different color for special bot responses */
+}
+
+
+
+/* Bot Icon */
+.botIcon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px; /* Positioned on the right */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* Circular image */
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #3498db; /* Header background color */
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.headerBotImg {
+  width: 30px; /* Adjust size as needed */
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.headerTitle {
+  font-size: 18px;
+  color: white; /* Text color for the header */
+  font-weight: bold;
+}
+
+
+
+/* Optional: Additional colors for different user responses */
+.userMessage.special {
+    background-color: #2ecc71; /* Different color for special user responses */
+}
+
+.botMessage.special {
+    background-color: #e74c3c; /* Different color for special bot responses */
+}
+
+
+
+/* Bot Icon */
+.botIcon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px; /* Positioned on the right */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* Circular image */
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Chatbot Container */
+.chatbotContainer {
+  position: fixed;
+  bottom: 90px; /* Above the bot icon */
+  right: 20px; /* Right-aligned */
+  width: 350px;
+  height: 500px;
+  background-color: #f4f4f4;
+  border-radius: 15px;
+  border: 2px solid #3498db;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* Messages Container */
+.messages {
+  flex: 1; /* Allows the container to grow */
+  padding: 15px;
+  overflow-y: auto; /* Enables scrolling for overflow */
+  background-color: #fff;
+  display: flex; /* Enables flexbox for child elements */
+  flex-direction: column; /* Aligns children in a column */
+}
+
+/* Common Message Styles */
+.message {
+  display: flex; /* Flexbox for message items */
+  padding: 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+/* Bot Message (aligned to the left) */
+.botMessage {
+  align-self: flex-start; /* Align bot messages to the left */
+  background-color: #8e44ad; /* Bot message background */
+  color: white;
+  padding: 10px 15px; /* Padding for bot messages */
+  border-radius: 15px; /* Rounded corners for bot messages */
+  max-width: 75%; /* Limit width of bot messages */
+}
+
+/* User Message (aligned to the right) */
+.userMessage {
+  align-self: flex-end; /* Keep user messages on the right */
+  background-color: #379fe4; /* User message background */
+  color: white;
+  padding: 10px 15px; /* Padding for user messages */
+  border-radius: 15px; /* Rounded corners for user messages */
+  max-width: 75%; /* Limit width of user messages */
+}
+
+
+/* Bot Image */
+.botImg {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Input Container */
+.inputContainer {
+  display: flex;
+  padding: 10px;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.input {
+  flex: 1;
+  border: 2px solid #3498db;
+  padding: 10px;
+  border-radius: 20px;
+  outline: none;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.sendButton {
+  background-color: #3498db;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+} 
+
+/* Bot Image */
+.botImg {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Input Container */
+.inputContainer {
+  display: flex;
+  padding: 10px;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.input {
+  flex: 1;
+  border: 2px solid #3498db;
+  padding: 10px;
+  border-radius: 20px;
+  outline: none;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.sendButton {
+  background-color: #3498db;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+} 

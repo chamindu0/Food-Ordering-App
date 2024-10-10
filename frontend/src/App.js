@@ -16,7 +16,7 @@ function App() {
     <>
       <Loading />
       <Header />
-      <AppRoutes />
+      <AppRoutes /> 
     </>
   );
 }

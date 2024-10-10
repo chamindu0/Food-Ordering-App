@@ -17,6 +17,9 @@ import FoodsAdminPage from './pages/FoodsAdmin/FoodsAdminPage';
 import FoodEditPage from './pages/FoodEdit/FoodEditPage';
 import UsersPage from './pages/UsersPage/UsersPage';
 import UserEditPage from './pages/UserEdit/UserEditPage';
+import Chatbot from './components/ChatBot/ChatBot';
+import ChangeStatus from './components/ChangeStatus/ChangeStatus';
+import ShowReview from './components/ShowReview/ShowReview';
 
 export default function AppRoutes() {
   return (
@@ -49,6 +52,9 @@ export default function AppRoutes() {
         element={
           <AuthRoute>
             <OrderTrackPage />
+            <AdminRoute>
+              <ChangeStatus />
+            </AdminRoute>
           </AuthRoute>
         }
       />
@@ -65,6 +71,7 @@ export default function AppRoutes() {
         element={
           <AuthRoute>
             <OrdersPage />
+            <Chatbot />
           </AuthRoute>
         }
       />
@@ -84,7 +91,6 @@ export default function AppRoutes() {
           </AdminRoute>
         }
       />
-
       <Route
         path="/admin/addFood"
         element={
@@ -109,7 +115,6 @@ export default function AppRoutes() {
           </AdminRoute>
         }
       />
-
       <Route
         path="/admin/editUser/:userId"
         element={
@@ -118,6 +123,18 @@ export default function AppRoutes() {
           </AdminRoute>
         }
       />
+      <Route
+        path="/admin/order-status/:orderId"
+        element={
+          <AdminRoute>
+            {/* This route can have its own component if needed */}
+          </AdminRoute>
+        }
+      />
+      <Route path="/food/reviews" 
+      element={<ShowReview />} />
+
+
     </Routes>
   );
 }

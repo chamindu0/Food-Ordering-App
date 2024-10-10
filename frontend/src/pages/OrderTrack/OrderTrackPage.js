@@ -7,17 +7,19 @@ import DateTime from '../../components/DateTime/DateTime';
 import OrderItemsList from '../../components/OrderItemsList/OrderItemsList';
 import Title from '../../components/Title/Title';
 import Map from '../../components/Map/Map';
+import ReviewForm from '../../components/ReviewForm/ReviewForm';
 
 export default function OrderTrackPage() {
   const { orderId } = useParams();
   const [order, setOrder] = useState();
 
-  useEffect(() => {
-    orderId &&
-      trackOrderById(orderId).then(order => {
-        setOrder(order);
-      });
-  }, []);
+useEffect(() => {
+  if (orderId) {
+    trackOrderById(orderId).then(order => {
+      setOrder(order);
+    });
+  }
+}, [orderId]);
 
   if (!orderId)
     return <NotFound message="Order Not Found" linkText="Go To Home Page" />;
@@ -60,12 +62,22 @@ export default function OrderTrackPage() {
           <Map location={order.addressLatLng} readonly={true} />
         </div>
 
+            {order.status === 'SHIPPED' && (
+            <ReviewForm foodId={order.foodId} /> 
+          )}
+
+
         {order.status === 'NEW' && (
           <div className={classes.payment}>
             <Link to="/payment">Go To Payment</Link>
           </div>
         )}
+
+        
+      
       </div>
+      
+      
     )
   );
 }

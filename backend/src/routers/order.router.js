@@ -99,6 +99,40 @@ router.get(
   })
 );
 
+// PUT: Update order status (Admin only)
+router.put(
+  '/status/:orderId',
+  handler(async (req, res) => {
+    const { orderId } = req.params;
+    const { status } = req.body;
+
+    // Find the current user
+    const user = await UserModel.findById(req.user.id);
+
+    // Check if the user is an admin
+    if (!user.isAdmin) {
+      return res.status(FORBIDDEN).json({ message: 'Access denied. Admins only!' });
+    }
+
+    // Validate the provided status
+    if (!Object.values(OrderStatus).includes(status)) {
+      return res.status(BAD_REQUEST).json({ message: 'Invalid order status!' });
+    }
+
+    // Find the order by ID
+    const order = await OrderModel.findById(orderId);
+    if (!order) {
+      return res.status(NOT_FOUND).json({ message: 'Order not found!' });
+    }
+
+    // Update the status and save
+    order.status = status;
+    await order.save();
+
+    res.json({ message: 'Order status updated successfully.', order });
+  })
+);
+
 const getNewOrderForCurrentUser = async req =>
   await OrderModel.findOne({
     user: req.user.id,
