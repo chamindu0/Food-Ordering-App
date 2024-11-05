@@ -13,8 +13,12 @@ export default function Header() {
     <header className={classes.header}>
       <div className={classes.container}>
         <Link to="/" className={classes.logo}>
-         <a href="https://fontmeme.com/sinhala/"><img src="https://fontmeme.com/permalink/240718/449f20bb8e40e8b24ad6662c5c1afc51.png" alt="sinhala" border="0"/></a> <a href="https://fontmeme.com/comic-fonts/"><img src="https://fontmeme.com/permalink/240718/ec68e0c7bd706468b0c46a6ca9748b5e.png" alt="comic-fonts" border="0"/></a>
+        <a href="https://fontmeme.com/sinhala/"><img src="https://fontmeme.com/permalink/241104/c8bb474dcab8f70a639dbb929df4ce4f.png" alt="sinhala" border="0"/></a> <a href="https://fontmeme.com/comic-fonts/">
+         
+         <img src="https://fontmeme.com/permalink/240718/ec68e0c7bd706468b0c46a6ca9748b5e.png" alt="comic-fonts" border="0"/></a>
         </Link>
+
+        
         <nav>
           <ul>
             {user ? (

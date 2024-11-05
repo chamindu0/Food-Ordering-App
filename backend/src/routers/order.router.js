@@ -62,7 +62,7 @@ router.get(
       filter.user = user._id;
     }
 
-    const order = await OrderModel.findOne(filter);
+    const order = (await OrderModel.findOne(filter)); 
 
     if (!order) return res.send(UNAUTHORIZED);
 

@@ -5,7 +5,7 @@
   align-items: center;
   flex-wrap: wrap;
   margin: 3rem;
-  gap: 2rem; /* Add some spacing between image and details */
+  gap: 2rem;
 }
 
 .container > * {
@@ -14,16 +14,17 @@
 }
 
 .image {
-  border-radius: 2rem; /* Softer rounded corners */
+  border-radius: 1.5rem;
   flex: 1 0;
   object-fit: cover;
   height: 35rem;
   margin: 1rem;
-  transition: transform 0.3s ease; /* Add smooth scaling effect */
+  transition: transform 0.4s ease, box-shadow 0.4s ease; /* Smooth scaling and shadow */
 }
 
 .image:hover {
-  transform: scale(1.05); /* Slight zoom effect on hover */
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Modern shadow on hover */
 }
 
 .details {
@@ -31,29 +32,30 @@
   display: flex;
   flex-direction: column;
   flex: 1 0;
-  border-radius: 2rem; /* Softer corners */
+  border-radius: 2rem;
   padding: 2rem;
   color: black;
-  background-color: #f9f9f9; /* Light background for contrast */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background: linear-gradient(145deg, #f8f5f5, #f4f1f1); /* Modern soft gradient */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); /* Subtle shadow */
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Vertically center the items */
+  align-items: center;
 }
 
 .name {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333; /* Darker text for contrast */
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 0.5px; /* Slightly spaced-out text for a clean look */
 }
 
 .favorite {
-  color: #e72929;
+  color: #ff6b6b;
   font-size: 2.5rem;
-  transition: color 0.3s ease; /* Smooth color transition */
+  transition: color 0.3s ease;
 }
 
 .favorite.not {
@@ -61,7 +63,7 @@
 }
 
 .favorite:hover {
-  color: #d12424; /* Darker red on hover */
+  color: #ff5252;
 }
 
 .origins {
@@ -71,12 +73,12 @@
 }
 
 .origins > span {
-  padding: 0.5rem 1rem; /* Add horizontal padding */
-  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
   margin: 0.5rem 0.5rem 0 0;
-  border-radius: 2rem;
-  background-color: #e0f7fa; /* Soft background color */
-  color: #00796b; /* Complementary text color */
+  border-radius: 20px;
+  background-color: #e0f7fa;
+  color: #00796b;
 }
 
 .cook_time {
@@ -84,18 +86,18 @@
 }
 
 .cook_time span {
-  padding: 0.6rem 2rem;
-  border-radius: 10rem;
-  font-size: 1.3rem;
-  background-color: #ffecb3; /* Soft yellow background */
-  color: #795548; /* Darker complementary text color */
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  background-color: #fff5b1; /* Updated softer yellow */
+  color: #795548;
 }
 
 .price {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 2rem 2rem 2rem 0;
-  color: green;
-  font-weight: bold;
+  color: #27ae60;
+  font-weight: 600;
 }
 
 .price::before {
@@ -103,24 +105,25 @@
   color: darkgrey;
 }
 
+/* Modernized Button Styles */
 .container button {
   color: white;
-  background-color: #e72929;
+  background-color: #ff6b6b;
   border: none;
   font-size: 1.2rem;
-  padding: 1rem 2rem;
-  border-radius: 10rem;
+  padding: 1rem 2.5rem;
+  border-radius: 50px; /* Fully rounded button */
   outline: none;
-  transition: background-color 0.3s ease, opacity 0.3s ease; /* Smooth transitions */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .container button:hover {
-  background-color: #d12424; /* Slightly darker red on hover */
-  opacity: 0.95;
+  background-color: #ff5252;
+  box-shadow: 0 6px 15px rgba(255, 105, 105, 0.3); /* Modern shadow */
   cursor: pointer;
 }
 
-/* Recommendation styles */
+/* Recommendation Section */
 .recommendations {
   margin-top: 3rem;
 }
@@ -132,32 +135,45 @@
 }
 
 .recommendationItem {
-  width: 150px;
+  width: 160px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transform and shadow */
+  background-color: #f9f9f9; /* Light background for each item */
+  border-radius: 15px;
+  padding: 15px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .recommendationItem:hover {
-  transform: translateY(-5px); /* Slight lift effect on hover */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .recommendationItem img {
   width: 100%;
-  border-radius: 10px;
-  transition: transform 0.3s ease; /* Smooth scaling effect */
+  border-radius: 12px;
+  transition: transform 0.4s ease;
 }
 
 .recommendationItem img:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
+  transform: scale(1.08);
 }
 
 .recommendationDetails {
   text-align: center;
   margin-top: 10px;
   color: #333;
+  font-size: 1rem;
+}
+
+/* Add smoother typography for headings */
+h3 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: #444;
+  text-align: center;
 }

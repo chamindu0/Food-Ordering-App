@@ -1,0 +1,16 @@
+
+
+
+.tags {
+  width: 100%;
+  margin-top: 20px; /* Add some space above */
+  margin-bottom: 30px; /* Increase the spacing between Categories and Tags */
+}
+
+.thumbnails {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+

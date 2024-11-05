@@ -60,4 +60,12 @@ const allItems = [
     bgColor: '#e040fb',
     color: 'white',
   },
+    {
+    title: 'Analys',
+    imageUrl: '/icons/analys.svg',
+    url: '/admin/analys',
+    forAdmin: true,
+    bgColor: '#e6df22',
+    color: 'white',
+  },
 ];

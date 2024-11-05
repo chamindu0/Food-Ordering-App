@@ -1,13 +1,16 @@
-// components/ShowReview/ShowReview.js
-import React, { useEffect, useState } from "react";
-import { getReviewsByFoodId, submitReview } from "../../services/reviewService";
+import React, { useEffect, useState, useRef } from "react";
+import { getReviewsByFoodId } from "../../services/reviewService";
 import StarRating from "../../components/StarRating/StarRating";
 import classes from "./ShowReview.module.css";
 
 export default function ShowReview({ foodId }) {
   const [reviews, setReviews] = useState([]);
-  const [comment, setComment] = useState("");
-  const [rating, setRating] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isSliding, setIsSliding] = useState(true); // For auto-sliding
+  const [dragStartX, setDragStartX] = useState(null); // Track drag start
+  const [isDragging, setIsDragging] = useState(false);
+
+  const containerRef = useRef(null);
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -22,65 +25,95 @@ export default function ShowReview({ foodId }) {
     fetchReviews();
   }, [foodId]);
 
-  // Handle review submission
-  const handleSubmitReview = async (e) => {
-    e.preventDefault();
-    const userId = localStorage.getItem("userId"); // Retrieve user ID from local storage
-
-    if (!userId) {
-      console.error("User is not logged in");
-      return; // Handle not logged in state
+  // Auto-slide every 3 seconds
+  useEffect(() => {
+    let interval;
+    if (isSliding && reviews.length > 1) {
+      interval = setInterval(() => {
+        handleNext();
+      }, 3000);
     }
+    return () => clearInterval(interval);
+  }, [isSliding, reviews.length]);
 
-    const reviewData = {
-      foodId,
-      userId,
-      comment,
-      rating,
-    };
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % reviews.length);
+  };
 
-    try {
-      await submitReview(reviewData);
-      setComment(""); // Clear the comment field
-      setRating(1); // Reset rating
-      // Fetch reviews again to include the newly submitted review
-      const fetchedReviews = await getReviewsByFoodId(foodId);
-      setReviews(fetchedReviews);
-      console.log("Review submitted successfully");
-    } catch (error) {
-      console.error("Error submitting review:", error);
+  const handlePrev = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + reviews.length) % reviews.length
+    );
+  };
+
+  const handleReviewClick = () => {
+    setIsSliding(false); // Stop sliding when clicked
+  };
+
+  const handleDragStart = (e) => {
+    setIsDragging(true);
+    setIsSliding(false);
+    const startX = e.type === "touchstart" ? e.touches[0].clientX : e.clientX;
+    setDragStartX(startX);
+  };
+
+  const handleDragMove = (e) => {
+    if (!isDragging || dragStartX === null) return;
+
+    const currentX = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
+    const diff = dragStartX - currentX;
+
+    if (diff > 50) {
+      // Dragging left
+      handleNext();
+      setIsDragging(false);
+    } else if (diff < -50) {
+      // Dragging right
+      handlePrev();
+      setIsDragging(false);
     }
   };
 
+  const handleDragEnd = () => {
+    setIsDragging(false);
+    setDragStartX(null);
+  };
+
   return (
-    <div className={classes.container}>
+    <div
+      className={classes.container}
+      ref={containerRef}
+      onMouseDown={handleDragStart}
+      onMouseMove={handleDragMove}
+      onMouseUp={handleDragEnd}
+      onTouchStart={handleDragStart}
+      onTouchMove={handleDragMove}
+      onTouchEnd={handleDragEnd}
+    >
       <h3>User Reviews</h3>
-      <form onSubmit={handleSubmitReview}>
-        <StarRating
-          stars={rating}
-          size={25}
-          onChange={(newRating) => setRating(newRating)}
-        />
-        <textarea
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          required
-          placeholder="Write your review..."
-        />
-        <button type="submit">Submit Review</button>
-      </form>
       {reviews.length === 0 ? (
         <p>No reviews yet.</p>
       ) : (
-        reviews.map((review) => (
-          <div key={review._id} className={classes.review}>
-            <StarRating stars={review.rating} size={25} />
-            <p>{review.comment}</p>
-            <span className={classes.date}>
-              {new Date(review.createdAt).toLocaleDateString()}
-            </span>
+        <div className={classes.carousel} onClick={handleReviewClick}>
+          <div
+            className={classes.slides}
+            style={{
+              transform: `translateX(-${currentIndex * 100}%)`,
+            }}
+          >
+            {reviews.map((review, index) => (
+              <div className={classes.review} key={review._id}>
+                <p>{review.userName}</p>
+                <StarRating stars={review.rating} size={25} />
+                <p>{review.comment}</p>
+                <span className={classes.date}>
+                  {new Date(review.createdAt).toLocaleDateString()}
+                </span>
+              </div>
+            ))}
           </div>
-        ))
+      
+        </div>
       )}
     </div>
   );

@@ -27,10 +27,10 @@ export const sample_foods = [
     price: 2000,
     cookTime: "10-15",
     favorite: false,
-    origins: ["indian","Sri Lankan"],
+    origins: ["indian", "Sri Lankan"],
     stars: 3.5,
     imageUrl: "food-3.jpg",
-    tags: ["SlowFood", "Briyani","indian"],
+    tags: ["SlowFood", "Briyani", "indian"],
   },
   {
     id: "4",
@@ -41,7 +41,7 @@ export const sample_foods = [
     origins: ["indian"],
     stars: 3,
     imageUrl: "food-4.jpg",
-    tags: ["FastFood", "Breakfast","indian"],
+    tags: ["FastFood", "Breakfast", "indian"],
   },
   {
     id: "5",
@@ -65,6 +65,19 @@ export const sample_foods = [
     imageUrl: "food-6.jpg",
     tags: ["FastFood", "Lunch"],
   },
+    {
+    id: "7",
+    name: "Peporani Pizza",
+    price: 1250,
+    cookTime: "10-15",
+    favorite: false,
+    origins: ["Italy"],
+    stars: 3.5,
+    imageUrl: "food-8.jpg",
+    tags: ["FastFood", "Pizza"],
+  },
+
+
 ];
 
 export const sample_tags = [

@@ -1,16 +1,41 @@
 .container {
   margin-top: 20px;
+  margin: 0 auto;
+  position: relative;
+ 
+}
+
+
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+
 }
 
 .review {
+  min-width:100%;
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 10px;
+  padding-left:35px;
+  padding-top:15px;
+  padding-bottom:15px;
   background-color: #f9f9f9;
+  
+  
 }
 
 .date {
   font-size: 0.9rem;
   color: #888;
 }
+

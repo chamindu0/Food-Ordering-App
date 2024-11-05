@@ -1,19 +1,32 @@
 .header {
   background: white;
   padding: 0;
-  border-bottom: 1px solid #e72929;
+  border-bottom: 1px solid #e78282;
 }
 
-
-
 .header a {
-  color: #af1313;
+  color: #d62525;
+  transition: color 0.3s ease; /* Smooth color transition */
 }
 
 .header a:hover {
   background: #e72929;
-  color: white;
+  color: rgb(11, 11, 11);
   cursor: pointer;
+  animation: jump-rotate 0.3s ease; /* Add jump and rotate animation on hover */
+}
+
+/* Keyframe animation for jumping and rotating effect */
+@keyframes jump-rotate {
+  0% {
+    transform: translateY(0) rotate(0deg); /* Start position */
+  }
+  50% {
+    transform: translateY(-5px) rotate(5deg); /* Move up and rotate slightly */
+  }
+  100% {
+    transform: translateY(0) rotate(0deg); /* Return to original position */
+  }
 }
 
 .container {

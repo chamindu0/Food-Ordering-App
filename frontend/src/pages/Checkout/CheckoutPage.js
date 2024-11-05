@@ -12,6 +12,8 @@ import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import OrderItemsList from '../../components/OrderItemsList/OrderItemsList';
 import Map from '../../components/Map/Map';
+
+
 export default function CheckoutPage() {
   const { cart } = useCart();
   const { user } = useAuth();

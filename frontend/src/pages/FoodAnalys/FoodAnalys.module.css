@@ -1,0 +1,283 @@
+/* General Styles */
+.dashboard {
+  padding: 20px;
+  background-color: #dadae8; /* Light background for contrast */
+  font-family: 'Arial', sans-serif;
+}
+
+.heading {
+  font-size: 2.5rem; /* Increased size for emphasis */
+  font-weight: bold;
+  color: #972e2e;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Loading Styles */
+.loading {
+  font-size: 1.5rem;
+  color: #999;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Grid Layout for Dashboard Content */
+.dashboardContent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  transition: transform 0.2s, box-shadow 0.2s; /* Responsive columns */
+  gap: 20px; /* Space between grid items */
+}
+
+/* Section Styles */
+
+/* Different sizes for specific sections */
+.small {
+  grid-column: span 1; /* Use one column */
+}
+
+.medium {
+  grid-column: span 2; /* Use two columns */
+}
+
+.large {
+  grid-column: span 3; /* Use three columns */
+}
+
+/* Subheading Styles */
+.subheading {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #676161;
+  margin-bottom: 20px;
+  text-align: center; /* Centered subheadings */
+}
+
+/* Metrics Section */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive columns for horizontal alignment */
+  gap: 20px; /* Space between metrics */
+  margin-bottom: 20px; /* Space below metrics section */
+}
+
+.metricCard {
+  padding: 20px; /* Increased padding for better appearance */
+  background: #ffffff; /* Card background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Card shadow */
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s; /* Hover effect */
+  min-height: 150px; /* Set a fixed height for consistency */
+}
+
+/* Hover Effects */
+.metricCard:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.metricCard h3 {
+  margin: 0;
+  color: #070a0d; /* Darker text for headings */
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.metricCard p {
+  font-size: 3rem; /* Slightly larger metrics */
+  color: #e22e2e; /* Vibrant color for metrics */
+}
+
+/* Income Tabs */
+.incomeTabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.incomeTabs button {
+  flex: 1;
+  padding: 15px;
+  background-color: #3498db; /* Vibrant blue for buttons */
+  border: none;
+  color: white;
+  border-radius: 8px; /* More rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 0 5px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.incomeTabs button:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Table Styles */
+/* Modern vibrant colors for table rows */
+.table tr:nth-child(1) {
+  background-color: #fd9990; /* Vibrant Coral Red */
+  color: #070707;
+}
+
+.table tr:nth-child(2) {
+  background-color: #ffa726; /* Bright Orange */
+  color: #000000;
+}
+
+.table tr:nth-child(3) {
+  background-color: #66bb6a; /* Vibrant Green */
+  color: #010101;
+}
+
+.table tr:nth-child(4) {
+  background-color: #42a5f5; /* Bright Blue */
+  color: #030303;
+}
+
+.table tr:nth-child(5) {
+  background-color: #eea8fb; /* Bold Purple */
+  color: #000000;
+}
+
+/* Repeat the pattern for additional rows */
+.table tr:nth-child(6) {
+  background-color: #ef5350; /* Deep Red */
+  color: #050505;
+}
+
+.table tr:nth-child(7) {
+  background-color: #26c6da; /* Light Teal */
+  color: #000000;
+}
+
+.table tr:nth-child(8) {
+  background-color: #99ff9e; /* Vibrant Green */
+  color: #000000;
+}
+
+.table tr:nth-child(9) {
+  background-color: #8dccff; /* Bright Blue */
+  color: #000000;
+}
+
+.table tr:nth-child(10) {
+  background-color: #ffa58a; /* Vivid Orange */
+  color: #000000;
+}
+
+/* Hover effect for all rows */
+.table tr:hover {
+  background-color: #ffe590; /* Bright Yellow on hover */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Styling for the table */
+.table {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(103, 102, 102, 0.437);
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Table Header Styling */
+.table th {
+  background-color: #515050; /* Dark Gray for header */
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Table Header Corner Styling */
+.table th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.table th:last-child {
+  border-top-right-radius: 8px;
+}
+
+/* Rounded bottom-left corner on the first cell of the last row */
+.table tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+/* Rounded bottom-right corner on the last cell of the last row */
+.table tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+
+/* Subtle shadow effect when hovering over cells */
+.table tr:hover td {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Compact and centered table layout */
+.table {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+/* Chart Styles */
+.chart {
+  margin: 20px 0;
+  width: 100%;
+  height: auto; /* Allow height to adjust based on content */
+  background: #ffffff; /* White background for charts */
+  border-radius: 12px; /* Rounded corners */
+  padding: 50px;
+}
+
+/* Chart Hover Styles */
+.chart:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, box-shadow 0.2s; 
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 6px 50px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.exportButton {
+  display: block;  /* Ensures the button behaves like a block-level element */
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;  /* Horizontally centers the button */
+  border-radius: 25px;
+  text-align: center;  /* Ensures text inside the button is centered */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .metrics {
+    grid-template-columns: 1fr; /* Single column on small screens */
+  }
+
+  .incomeTabs {
+    flex-direction: column; /* Stack tabs on smaller screens */
+  }
+
+  .incomeTabs button {
+    margin: 10px 0; /* Vertical spacing for stacked buttons */
+  }
+}

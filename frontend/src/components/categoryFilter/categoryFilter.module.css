@@ -1,0 +1,64 @@
+/* Desktop Styles */
+.categoryFilter {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  margin-left: 40px;
+  margin-right: 40px;
+  justify-content: space-between; /* Ensures even spacing between items */
+}
+
+.categoryItem {
+  margin-left: 40px;
+  margin-right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.categoryItem:hover .categoryImage {
+  transform: scale(1.05); /* Slight zoom on hover */
+  background-color: #f2cc4e; /* Change background color on hover */
+}
+
+.categoryImage {
+  width: 120px; /* Adjusted size for a more balanced look */
+  height: 120px;
+  border-radius: 50%; /* Make the images round */
+  object-fit: cover; /* Ensure the image fits within the circular area */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff; /* Default background color */
+  transition: background-color 0.2s ease; /* Smooth transition for background color */
+}
+
+.categoryLabel {
+  margin-top: 10px;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .categoryFilter {
+    flex-direction: column; /* Stack items vertically on mobile */
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .categoryItem {
+    margin: 20px 0; /* Adjust margin for stacked layout */
+  }
+
+  .categoryImage {
+    width: 100px; /* Adjusted size for smaller screens */
+    height: 100px;
+  }
+
+  .categoryLabel {
+    font-size: 16px; /* Slightly smaller text for mobile */
+  }
+}

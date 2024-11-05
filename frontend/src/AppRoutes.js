@@ -19,7 +19,8 @@ import UsersPage from './pages/UsersPage/UsersPage';
 import UserEditPage from './pages/UserEdit/UserEditPage';
 import Chatbot from './components/ChatBot/ChatBot';
 import ChangeStatus from './components/ChangeStatus/ChangeStatus';
-import ShowReview from './components/ShowReview/ShowReview';
+import FoodAnalys from './pages/FoodAnalys/FoodAnalys';
+
 
 export default function AppRoutes() {
   return (
@@ -27,7 +28,7 @@ export default function AppRoutes() {
       <Route path="/" element={<HomePage />} />
       <Route path="/search/:searchTerm" element={<HomePage />} />
       <Route path="/tag/:tag" element={<HomePage />} />
-      <Route path="/food/:id" element={<FoodPage />} />
+      <Route path="/food/:id" element={<FoodPage /> } />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
@@ -124,15 +125,13 @@ export default function AppRoutes() {
         }
       />
       <Route
-        path="/admin/order-status/:orderId"
+        path="/admin/analys"
         element={
           <AdminRoute>
-            {/* This route can have its own component if needed */}
+             <FoodAnalys />
           </AdminRoute>
         }
       />
-      <Route path="/food/reviews" 
-      element={<ShowReview />} />
 
 
     </Routes>

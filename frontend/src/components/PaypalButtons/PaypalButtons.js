@@ -51,7 +51,7 @@ function Buttons({ order }) {
       const orderId = await pay(payment.id);
       clearCart();
       toast.success('Payment Saved Successfully', 'Success');
-      navigate('/track/' + orderId);
+      navigate('/orders');
     } catch (error) {
       toast.error('Payment Save Failed', 'Error');
     }

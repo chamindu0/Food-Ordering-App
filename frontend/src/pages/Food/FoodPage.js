@@ -11,7 +11,7 @@ import ShowReview from '../../components/ShowReview/ShowReview';
 
 export default function FoodPage() {
   const [food, setFood] = useState({});
-  const [recommendedFoods, setRecommendedFoods] = useState([]); // State for recommendations
+  const [recommendedFoods, setRecommendedFoods] = useState([]);
   const { id } = useParams();
   const { addToCart } = useCart();
   const navigate = useNavigate();
@@ -101,12 +101,16 @@ export default function FoodPage() {
                 </Link>
               ))}
             </div>
-            <ShowReview foodId={id} />
+           
           </div>
+          <ShowReview foodId ={id} />
         </div>
+        
       )}
-
-    
+       
+       
+      
     </>
   );
+  
 }

@@ -12,7 +12,6 @@ import ReviewForm from '../../components/ReviewForm/ReviewForm';
 export default function OrderTrackPage() {
   const { orderId } = useParams();
   const [order, setOrder] = useState();
-
 useEffect(() => {
   if (orderId) {
     trackOrderById(orderId).then(order => {
@@ -20,6 +19,7 @@ useEffect(() => {
     });
   }
 }, [orderId]);
+
 
   if (!orderId)
     return <NotFound message="Order Not Found" linkText="Go To Home Page" />;
@@ -63,8 +63,8 @@ useEffect(() => {
         </div>
 
             {order.status === 'SHIPPED' && (
-            <ReviewForm foodId={order.foodId} /> 
-          )}
+            <ReviewForm order={order} /> 
+          ) }
 
 
         {order.status === 'NEW' && (

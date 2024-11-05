@@ -1,16 +1,12 @@
-// services/reviewService.js
-
 import axios from "axios";
 
-// Base URL for your API
-const API_URL = "/api/reviews";
 
 // Function to submit a review
-export const submitReview = async ({ foodId, userId, comment, rating }) => {
+export const submitReview = async ({ foodId, userName, comment, rating }) => {
   try {
-    const response = await axios.post(`${API_URL}/foods`, {
+    const response = await axios.post(`/api/reviews/foods/${foodId}`, {
       foodId,
-      userId,
+      userName,
       comment,
       rating,
     });
@@ -22,12 +18,39 @@ export const submitReview = async ({ foodId, userId, comment, rating }) => {
 };
 
 // Function to fetch reviews by food ID
-export const getReviewsByFoodId = async (foodId) => {
+export const getReviewsByFood = async () => {
   try {
-    const response = await axios.get(`${API_URL}/foods/${foodId}`); // Ensure the URL matches your backend route
+    const response = await axios.get(`/api/reviews/foods/`); // Ensure the URL matches your backend route
     return response.data; // Return the list of reviews
   } catch (error) {
     console.error("Error fetching reviews:", error);
     throw error; // Throw error to be handled in the component
   }
+
+
 };
+
+// Function to fetch reviews by food ID
+export const getReviewsByFoodId = async (foodId) => {
+  try {
+    const response = await axios.get(`/api/reviews/foods/`+foodId); // Ensure the URL matches your backend route
+    return response.data; // Return the list of reviews
+  } catch (error) {
+    console.error("Error fetching reviews:", error);
+    throw error; // Throw error to be handled in the component
+  }
+
+};
+
+
+export const getReviewsByUserName = async (userName) => {
+  try {
+    const response = await axios.get(`/api/reviews/foods/`+userName); // Ensure the URL matches your backend route
+    return response.data; // Return the list of reviews
+  } catch (error) {
+    console.error("Error fetching reviews:", error);
+    throw error; // Throw error to be handled in the component
+  }
+
+};
+

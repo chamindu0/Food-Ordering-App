@@ -8,7 +8,8 @@ import orderRouter from './routers/order.router.js';
 import uploadRouter from './routers/upload.router.js';
 import chatRoutes from './routers/chatbot.router.js';
 import recommendationRoutes from './routers/recommendations.router.js';
-import reviewRoutes from './routers/review.router.js'
+import reviewRoutes from './routers/review.router.js';
+import analysRoutes from './routers/analys.router.js';
 import { dbconnect } from './config/database.config.js';
 
 import axios from 'axios';
@@ -19,10 +20,14 @@ const app = express();
 app.use(express.json());
 app.use(cors({
   credentials: true,
-  origin: ["http://localhost:3001"]
+  origin: ["http://localhost:3000"]
 }));
 
-const apiKey = 'AIzaSyAhYqzmmdOLU5PhFRyuR_7PELwaFoeSVWU'; 
+
+
+
+
+const apiKey = process.env.GEMINI_API_KEY; 
 
 app.post('/api/gemini', async (req, res) => {
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
@@ -54,6 +59,7 @@ app.use('/api/upload', uploadRouter);
 app.use('/api/chatbot', chatRoutes);
 app.use('/api/foods',recommendationRoutes);
 app.use('/api/reviews',reviewRoutes);
+app.use('/api/admin/analys', analysRoutes);
 
 
 
